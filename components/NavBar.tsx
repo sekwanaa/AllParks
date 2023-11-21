@@ -1,26 +1,27 @@
-import { Text, View, Image, ScrollView, Pressable } from 'react-native';
+import React from 'react';
+import { View, Text, Image, Pressable } from 'react-native';
 import { NavBarStyles } from '../assets/css/NavBar_style'
 import { AppStyles } from '../assets/css/App_style';
 
 const icons = [
     {
-        name: 'iconHome',
+        name: 'Home',
         location: require('../assets/icons/Home.png')
     },
     {
-        name: 'iconMap',
+        name: 'Map',
         location: require('../assets/icons/Map.png')
     },
     {
-        name: 'iconGallery',
+        name: 'Gallery',
         location: require('../assets/icons/Gallery.png')
     },
     {
-        name: 'iconSaved',
+        name: 'Saved',
         location: require('../assets/icons/Saved.png')
     },
     {
-        name: 'iconSearch',
+        name: 'Search',
         location: require('../assets/icons/Search.png')
     }
 ]
@@ -29,24 +30,36 @@ const iconHeight = 25
 const iconWidth = 25
 
 
-export default function NavBar() {
-    function pressHandler() {
-        console.log('pressed')
+export default class NavBar extends React.Component{
+    state = {
+        screenText: 'Press a button'
+    }
+    
+    changeText = (text: string) => {
+        console.log(text + ' has been pressed')
+        this.setState({
+            screenText: text
+        })
     }
 
-    const pressableIcons = icons.map(icon => {
+    pressableIcons = icons.map(icon => {
         return (
-            <Pressable onPress={pressHandler} style={{padding: 10}}>
-                <Image key={icon.name} source={icon.location} style={{height: iconHeight, width: iconWidth}}/>
+            <Pressable key={icon.name} onPress={() => this.changeText(icon.name)} style={{padding: 10}}>
+                <Image source={icon.location} style={{height: iconHeight, width: iconWidth}}/>
             </Pressable>
         )
     })
 
-    return (
-        <View style={[NavBarStyles.navBarContainer]}>
-            <View style={NavBarStyles.navBar}>
-                {pressableIcons}
-            </View>
-        </View>
-    );
+    render(): React.ReactNode {
+        return (
+            <>
+                <Text>{this.state.screenText}</Text>
+                <View style={[NavBarStyles.navBarContainer, AppStyles.shadow]}>
+                    <View style={NavBarStyles.navBar}>
+                        {this.pressableIcons}
+                    </View>
+                </View>
+            </>
+        );
+    }
 }

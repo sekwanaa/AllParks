@@ -8,6 +8,7 @@ export const NavBarStyles = StyleSheet.create({
         bottom: 40,
         borderRadius: 40,
         backgroundColor: "#fff",
+        width: '90%',
     },
     navBar: {
         width: '90%',
