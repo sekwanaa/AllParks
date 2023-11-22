@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import { NavBarStyles } from '../assets/css/NavBar_style'
 import { AppStyles } from '../assets/css/App_style';
+import { IconStyles } from '../assets/css/Icon_style';
 
 const icons = [
     {
@@ -25,11 +26,6 @@ const icons = [
         location: require('../assets/icons/Search.png')
     }
 ]
-
-const iconHeight = 25
-const iconWidth = 25
-
-
 export default class NavBar extends React.Component{
     state = {
         screenText: 'Press a button'
@@ -45,7 +41,7 @@ export default class NavBar extends React.Component{
     pressableIcons = icons.map(icon => {
         return (
             <Pressable key={icon.name} onPress={() => this.changeText(icon.name)} style={{padding: 10}}>
-                <Image source={icon.location} style={{height: iconHeight, width: iconWidth}}/>
+                <Image source={icon.location} style={IconStyles.size}/>
             </Pressable>
         )
     })

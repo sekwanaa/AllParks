@@ -11,7 +11,7 @@ export default function App(){
           <ImageBackground source={require("./assets/images/Background.png")} resizeMode={'cover'} style={{height: '100%', width: '100%'}}>
             <LandingPage/>
           </ImageBackground>
-          <NavBar/>
+          {/* <NavBar/> */}
         <StatusBar style="auto" />
       </View>
     );

@@ -8,6 +8,7 @@ export const AppStyles = StyleSheet.create({
   },
   LandingPageContainer: {
     flex: 1,
+    width: '100%',
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
